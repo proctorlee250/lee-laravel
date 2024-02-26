@@ -31,7 +31,7 @@ class CardController extends Controller
     print_r($gameCards);
     echo '</pre>';
     
-
+    // need to do something with the picture cards too!
     //exit;
 
         return view('card')->with('gameCards', $gameCards);
@@ -41,7 +41,8 @@ class CardController extends Controller
     {
         $formValues = $request->all();
 
-        $correct = 0;
+        $correct = Session::get('correct');
+
         //firstCard, secondCard, guess
         if (  ($formValues['firstCard'] < $formValues['secondCard']) AND ($formValues['guess'] == 'higher') ) {
             //correct higher
