@@ -30,4 +30,14 @@ class CardController extends Controller
 
         return view('card')->with('firstCard', $firstCard);
     }
+
+    public function submit(Request $request)
+    {
+        $formValues = $request->all();
+        
+        echo 'here';
+        print_r($formValues);
+        exit;
+        return redirect()->back()->with('message', 'Form submitted successfully!');
+    }
 }
