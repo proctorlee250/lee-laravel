@@ -45,13 +45,22 @@ class CardController extends Controller
         //firstCard, secondCard, guess
         if (  ($formValues['firstCard'] < $formValues['secondCard']) AND ($formValues['guess'] == 'higher') ) {
             //correct higher
-            $correct++;
+            $correct = $correct + 1;
             Session::put('correct', $correct);
-
             return redirect()->back()->with('message', 'Correct!');
+
         }
+        elseif (  ($formValues['firstCard'] > $formValues['secondCard']) AND ($formValues['guess'] == 'lower') ) {
+            //correct lower
+            $correct = $correct + 1;
+            Session::put('correct', $correct);
+            return redirect()->back()->with('message', 'Correct!');
 
-
+        } else {
+            //incorrect
+            Session::put('correct', 0);
+            return redirect()->back()->with('message', 'Wrong!');
+        }
         
     }
 }
