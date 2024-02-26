@@ -19,10 +19,6 @@ class CardController extends Controller
 
     $shuffled = shuffle($cards);
 
-    echo '<pre>';
-    print_r($cards);
-    echo '</pre>';
-
     $firstCard = $cards[0];
 
     echo '<pre>';
@@ -30,8 +26,8 @@ class CardController extends Controller
     echo '</pre>';
     
 
-    exit;
+    //exit;
 
-        return view('cards')->with('users', $users);
+        return view('card')->with('firstCard', $firstCard);
     }
 }
