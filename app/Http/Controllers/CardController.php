@@ -19,16 +19,21 @@ class CardController extends Controller
 
     $shuffled = shuffle($cards);
 
-    $firstCard = $cards[0];
+    $firstCard = $cards[0]->value;
+    $secondCard = $cards[1]->value;
+
+    $gameCards = array();
+    $gameCards['1st'] = $firstCard;
+    $gameCards['2nd'] = $secondCard;
 
     echo '<pre>';
-    print_r($firstCard);
+    print_r($gameCards);
     echo '</pre>';
     
 
     //exit;
 
-        return view('card')->with('firstCard', $firstCard);
+        return view('card')->with('gameCards', $gameCards);
     }
 
     public function submit(Request $request)
