@@ -27,9 +27,6 @@ class CardController extends Controller
     $gameCards['1st'] = $firstCard;
     $gameCards['2nd'] = $secondCard;
 
-    echo '<pre>';
-    print_r($gameCards);
-    echo '</pre>';
     
     // need to do something with the picture cards too!
     //exit;
