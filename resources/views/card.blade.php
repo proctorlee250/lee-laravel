@@ -1,10 +1,10 @@
 <div id="game">
-
-    <p>Current Card: {{$firstCard->value}} - {{$firstCard->suit}}</p>
+Correct score: {{ Session::get('correct');}}
+    <p>Current Card: {{$gameCards['1st']}} </p>
     <form id="card-form" action="{{ route('submitForm') }}" method="POST">
         @csrf
-        <input type="hidden" id="first-card-value" name="firstCard" value="{{$firstCard->value}}">
-        <input type="hidden" id="second-card-value" name="secondCard" value="{{$firstCard->value}}">
+        <input type="hidden" id="first-card-value" name="firstCard" value="{{$gameCards['1st']}}">
+        <input type="hidden" id="second-card-value" name="secondCard" value="{{$gameCards['2nd']}}">
         
         <input type="radio" id="higher" name="guess" value="higher">
         <label for="higher">Higher</label><br>

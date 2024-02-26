@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class CardController extends Controller
 {
@@ -39,10 +40,18 @@ class CardController extends Controller
     public function submit(Request $request)
     {
         $formValues = $request->all();
+
+        $correct = 0;
+        //firstCard, secondCard, guess
+        if (  ($formValues['firstCard'] < $formValues['secondCard']) AND ($formValues['guess'] == 'higher') ) {
+            //correct higher
+            $correct++;
+            Session::put('correct', $correct);
+
+            return redirect()->back()->with('message', 'Correct!');
+        }
+
+
         
-        echo 'here';
-        print_r($formValues);
-        exit;
-        return redirect()->back()->with('message', 'Form submitted successfully!');
     }
 }
